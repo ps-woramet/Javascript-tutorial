@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p id = "name">index.html</p>
+    <button onclick="alert('hello world')">alert me</button>
+    <button onclick="changeBg()">change Bg gray</button>
+    <button onclick="changeBg2('red')">change Bg red</button>
+    <button onclick="displayDate()">displayDate</button>
+    <button onclick="this.style.display = 'none'">click me for hide me</button>
+    <!-- <button onmouseup="displayDate()">displayDate</button> -->
+    <!-- onmouse คือ เมื่อคลิกแล้วปล่อยเมาส์ -->
+    <p id = "date"></p>
+    <p id = "fruit"></p>
+    <script src="scripts.js"></script>
+</body>
+</html>
