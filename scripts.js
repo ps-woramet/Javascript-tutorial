@@ -641,3 +641,117 @@ console.log(mycountry2)
 let mecountry = ['thai', 'eng', 'japan'];
 let mecountry2 = mecountry.valueOf();
 console.log(mecountry2)
+
+// Synchrounous การทำงานแบบเป็นลำดับขั้นตอน
+// Asynchrounous การทำงานแบบไม่เป็นลำดับขั้นตอน
+
+// Synchronous
+console.log("Plant corn");
+console.log('Water plant');
+console.log('Add fertilizer');
+
+// Asynchronous
+console.log("Plant corn");
+setTimeout(function() {
+    console.log('Water plant');
+}, 3000);
+console.log('Add fertilizer');
+
+// Callback
+function greeting(name){
+    console.log(`hello my name is ${name}`);
+}
+
+function introduction(firstName, lastName, callback){
+    const fullName = `${firstName} ${lastName}`;
+    callback(fullName);
+}
+
+introduction('woramet', 'tompudsa', greeting);
+
+// Callback hell การเรียก callback ไปเรื่อยๆ แก้โดยใช้ promise
+// function logHomeroomTeacher(studentName){
+//     getStudentIdByName(studentName, id => {
+//         getRoomByStudentId(id, room => {
+//             getTeacherByRoom(room, console.log('done'));
+//         });
+//     });
+// }
+
+// Promise
+const weather = true;
+// new Promise(callbackfunc(resolve, reject){ condition })
+// resolve แก้ไข
+// reject ปฏิเสธ
+const date = new Promise(function(resolve, reject){
+    if (weather) {
+        const dateDetails = {
+            name : 'woramet',
+            location: '123st, Bangkok',
+            table: 5
+        }
+        resolve(dateDetails);
+    }
+    else{
+        // when error show message (weather = false)
+        reject(new Error('Bad weather, can not go to dinner.'));
+    };
+    console.log(date);
+});
+
+// วิธี 1
+// const orderUber = function(dateDetails){
+//     return new Promise(function(resolve, reject){
+//         const message = `Get me an Uber ASAP to ${dateDetails.location}, we are going to a dinner`;
+//         return resolve(message);
+//     })
+// }
+// const myDate = function(){
+//     //date.then(callbackfunc(donedata){condition})
+//     date
+//         .then(orderUber)
+//         .then(function(done){
+//             console.log('We are going on a dinner');
+//             console.log(done);
+//         })
+//         .catch(function(error){
+//             console.log(error.message);
+//         });
+// };
+// myDate();
+
+// วิธี 2
+// const orderUber = function(dateDetails){
+//     return new Promise(function(resolve, reject){
+//         const message = `Get me an Uber ASAP to ${dateDetails.location}, we are going to a dinner`;
+//         return resolve(message);
+//     })
+// }
+// async function myDate(){
+//     try{
+//         let dateDetails = await date;
+//         let message = await orderUber(dateDetails);
+//         console.log(message);
+//     }
+//     catch(error){
+//         console.log(error.message);
+//     }
+// }
+// (async () => {
+//     await myDate();
+// })();
+
+async function fetchUsers(endpoint){
+    const res = await fetch(endpoint);
+
+    if (!res.ok){
+        throw new Error(res.status); //404
+    }
+
+    let data = await res.json();
+    return data
+}
+
+fetchUsers('https://jsonplaceholder.typicode.com/users')
+    .then(data => console.log(data.map(user => user.username)))
+    .catch(err => console.log('Oops, error', err.message));
