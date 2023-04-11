@@ -406,3 +406,238 @@ class Model extends Car{
 var myCar = new Model("Ford", "Mustang");
 
 console.log(myCar.show());
+
+
+// about array
+Array.prototype.myUcase = function(){
+    for (i = 0; i<this.length;i++){
+        this[i] = this[i].toUpperCase();
+    }
+}
+
+let persons = ['woramet', 'tompudsa', 'game'];
+console.log(persons.constractor);
+persons.myUcase();
+console.log(persons);
+console.log(persons.length);
+
+let info1 = ['v1', 'v2'];
+let info2 = ['v3', 'v4'];
+
+let joinTwo = info1.concat(info2);
+console.log(joinTwo);
+
+let persons1 = ['woramet', 'tompudsa', 'game'];
+persons1.copyWithin(2, 0);
+console.log(persons1);
+// ใช้สำหรับคัดลอกส่วนหนึ่งของอาร์เรย์ไปยังตำแหน่งอื่นภายในอาร์เรย์เดียวกัน
+// array.copyWithin(target, start, end)
+// let array = [1, 2, 3, 4, 5];
+// Copy elements from index 2 to index 0
+// array.copyWithin(0, 2, 4);
+// console.log(array); // Output: [3, 4, 3, 4, 5]
+
+let fruits1 = ['banana', 'apple', 'kiwi', 'orange'];
+let f = fruits1.entries();
+for (x of f){
+    document.getElementById('fruits').innerHTML += x;
+}
+// เป็นเมธอดใน JavaScript ที่ใช้สำหรับสร้าง Iterator ที่คืนคู่ค่าแบบ key-value จาก properties
+// const obj = { foo: 'bar', baz: 'qux' };
+
+// // ใช้ entries เพื่อเข้าถึงคู่ค่า key-value ของ properties ในออบเจกต์
+// for (const [key, value] of Object.entries(obj)) {
+//   console.log(`${key}: ${value}`);
+// }
+// // Output:
+// // foo: bar
+// // baz: qux
+
+// const arr = [10, 20, 30];
+
+// // ใช้ entries เพื่อเข้าถึงคู่ค่า key-value ของ elements ในอาร์เรย์
+// for (const [index, value] of arr.entries()) {
+//   console.log(`Index: ${index}, Value: ${value}`);
+// }
+// // Output:
+// // Index: 0, Value: 10
+// // Index: 1, Value: 20
+// // Index: 2, Value: 30
+
+let ages = [30, 20, 10];
+function checkAdult(ages){
+    return ages <= 10;
+}
+
+function myFunctionage(){
+    document.getElementById('age').innerHTML = ages.every(checkAdult);
+};
+
+myFunctionage();
+// ใช้สำหรับตรวจสอบว่าทุกๆ สมาชิกในอาร์เรย์ผ่านเงื่อนไขที่กำหนดให้เป็นจริงหรือไม่
+// array.every(callback[, thisArg])
+// array: เป็นอาร์เรย์ที่ต้องการทำการตรวจสอบ
+// callback: เป็นฟังก์ชันที่ใช้ในการตรวจสอบเงื่อนไขของสมาชิกแต่ละตัวในอาร์เรย์ ฟังก์ชันนี้ต้องรับค่าพารามิเตอร์ที่แทนสำหรับสมาชิกแต่ละตัวในอาร์เรย์ และต้องคืนค่าเป็น true หรือ false ซึ่งหากคืนค่า false ที่บางครั้งจะหยุดการทำงานของ every
+// thisArg (ไม่บังคับ): เป็นค่า this ที่ใช้ในฟังก์ชัน callback ซึ่งถ้าไม่ระบุ thisArg จะใช้ค่า undefined เป็นค่าเริ่มต้น
+
+let animal = ['dog', 'cat', 'fish'];
+document.getElementById('animal').innerHTML = animal;
+
+function fillFunction(){
+    document.getElementById('animal').innerHTML = animal.fill('woramet');
+}
+// เปลี่ยนค่าสมาชิก
+// let numbers = [1, 2, 3, 4, 5];
+// // เปลี่ยนค่าสมาชิกทุกตัวในอาร์เรย์เป็น 0
+// numbers.fill(0);
+// console.log(numbers); // [0, 0, 0, 0, 0]
+// // เปลี่ยนค่าสมาชิกตั้งแต่ตำแหน่งที่ 2 ถึง 4 เป็น 9
+// numbers.fill(9, 2, 5);
+// console.log(numbers); // [0, 0, 9, 9, 9]
+
+let num = [8, 9, 10, 11, 12];
+function checkNum(num){
+    return num < 10;
+}
+
+// filter คัดกรอง
+function filterFunction(){
+    document.getElementById('numfilter').innerHTML = num.filter(checkNum);
+}
+
+// find ใช้ในการค้นหาสมาชิกที่เป็นเสมือนเงื่อนไขที่กำหนดให้เป็นจริง และคืนค่าของสมาชิกแรกที่พบ
+function findFunction(){
+    document.getElementById('numfind').innerHTML = num.find(checkNum);
+}
+
+// findindex ใช้ในการค้นหาIndexที่เป็นเสมือนเงื่อนไขที่กำหนดให้เป็นจริง และคืนค่าของสมาชิกแรกที่พบ
+function findIndexFunction(){
+    document.getElementById('numfindindex').innerHTML = num.findIndex(checkNum);
+}
+
+let lang = ['css', 'html', 'js'];
+// forEach เป็นฟังก์ชันของอาร์เรย์ใน JavaScript ที่ใช้ในการวนลูปผ่านสมาชิกทั้งหมดในอาร์เรย์และทำงานกับแต่ละสมาชิก โดยไม่สนใจผลลัพธ์ที่ส่งคืน
+lang.forEach(myLangFunction);
+
+function myLangFunction(item, index){
+    document.getElementById('lang').innerHTML += index + ": " + item;
+}
+
+// from เป็นเมธอดหรือฟังก์ชันที่ใช้ใน JavaScript เพื่อสร้างอ็อบเจกต์หรืออาร์เรย์ใหม่จากคอลเลกชันของค่าที่กำหนดมา
+let myArray = Array.from('ABCDE');
+document.getElementById('abc').innerHTML = myArray;
+
+// includes เป็นเมธอดหรือฟังก์ชันใน JavaScript ที่ใช้สำหรับตรวจสอบว่าอาร์เรย์หรือสตริง (String) มีค่าที่กำหนดหรือไม่
+let color1 = ['red', 'green', 'blue'];
+let includescolor1 = color1.includes('green');
+console.log(includescolor1);
+
+// indexOf เป็นเมธอดหรือฟังก์ชันใน JavaScript ที่ใช้สำหรับตรวจสอบ index ของสตริง  
+let country= ["thai", "eng", "japan"];
+let indexcountry = country.indexOf('thai');
+console.log(indexcountry);
+
+// isArray เป็นฟังก์ชันที่ใช้ใน JavaScript เพื่อตรวจสอบว่าค่าที่กำหนดเป็นอาร์เรย์หรือไม่
+function mySocialFunction(){
+    let social = ['line', 'facebook', 'ig'];
+    let socialtag = document.getElementById('socialtag');
+    socialtag.innerHTML = Array.isArray(social);
+}
+
+// join() เป็นฟังก์ชันใน JavaScript ที่ใช้ในการรวมสมาชิกของอาร์เรย์เป็นสตริง (string) โดยใช้ตัวคั่นที่กำหนดไว้ และส่งคืนสตริงใหม่ที่ได้รวมกันแล้ว
+let social2 = ['line', 'facebook', 'ig'];
+social2join= social2.join();
+console.log(social2join);
+
+// keys() เป็นฟังก์ชันใน JavaScript ที่ใช้ในการดึงคีย์ (property names) ของออบเจกต์ (object) และส่งคืนอาร์เรย์ที่มีคีย์เหล่านั้นเป็นสมาชิก
+let grade = ['a', 'b', 'c'];
+let grade_keys = grade.keys();
+// let obj = { a: 1, b: 2, c: 3 };
+// let keys = Object.keys(obj); // ดึงคีย์ของออบเจกต์ obj
+// console.log(keys); // แสดงผล ["a", "b", "c"]
+for (x of grade_keys){
+    console.log(x)
+}
+
+// lastindexof เป็นฟังก์ชันใน JavaScript ที่ใช้ในการค้นหาตำแหน่งของค่าที่กำหนดในอาร์เรย์ (array) ตั้งแต่ตำแหน่งสุดท้ายของอาร์เรย์
+let yourname = ['woramet', 'game', 'tompudsa'];
+let last_index = yourname.lastIndexOf('tompudsa');
+console.log(last_index);
+
+// map เป็นฟังก์ชันใน JavaScript ที่ใช้ในการสร้างอาร์เรย์ใหม่ (หรือแมพค่า) โดยใช้ฟังก์ชัน callback ที่กำหนดให้กับแต่ละสมาชิกในอาร์เรย์เดิม และส่งคืนอาร์เรย์ใหม่ที่มีค่าที่ถูกแมพจากแต่ละสมาชิกตามผลลัพธ์ที่ได้จากการเรียกใช้ฟังก์ชัน callback นั้น
+let myNum1 = [4, 16, 9, 25];
+let myNum2 = myNum1.map(Math.sqrt);
+console.log(myNum2);
+
+let himname = ['woramet', 'tompudsa', 'game'];
+let info = himname.map(info => console.log(info));
+
+// push add value 
+// pop remove value
+
+// reduce เป็นฟังก์ชันใน JavaScript ที่ใช้ในการลด (reduce) อาร์เรย์หรือคอลเลกชันของค่าให้เป็นค่าเดียว โดยใช้ฟังก์ชัน callback
+// reduce = left to right
+// reduceright = right to left
+let yournumber = [150, 100, 20];
+let yournumber2 = yournumber.reduce(myReduceFunction);
+function myReduceFunction(total, num){
+    return total - num
+}
+console.log(yournumber2)
+
+
+// reverse เป็นฟังก์ชันใน JavaScript ที่ใช้สำหรับการสลับลำดับของสมาชิกในอาร์เรย์ (array) ให้กลับหลังหน้า กลับหลังหน้า 
+let menumber = ['1', '2', '3'];
+let menumber2 = menumber.reverse(menumber);
+console.log(menumber2);
+
+
+// shift เป็นฟังก์ชันใน JavaScript ที่ใช้สำหรับการลบสมาชิกแรกของอาร์เรย์ (array) และคืนค่าสมาชิกแรกนั้นกลับมาเป็นผลลัพธ์ 
+let shiftnum = ['1', '2', '3'];
+let shiftnum2 = shiftnum.shift();
+console.log(shiftnum);
+
+// unshift เป็นฟังก์ชันใน JavaScript ที่ใช้สำหรับการเพิ่มสมาชิกใหม่เข้าไปในตำแหน่งแรกของอาร์เรย์
+let unshiftfruits = ['banana', 'cherry'];
+let unshiftfruits2 = unshiftfruits.unshift('apple');
+console.log(unshiftfruits);
+
+// Splice เลือกตำแหน่งแล้วแทนที่ vs Slice เลือกช่วง
+let splicefruits = ["apple", "watermelon", "banana"]
+let splicefruits2 = splicefruits.splice(2, 0, "Watermelon", "Cherry");
+// start, deleteCount, item1, item2, ...
+// ( choose index 2 ) ( remove 0 item ) (add "Lemon", "Kiwi")
+console.log(splicefruits)
+
+let slicefruits = ["apple", "watermelon", "banana", 'kiwi', 'orange']
+let slicefruits2 = slicefruits.slice(1,3)
+// choose index 1 to index 3
+console.log(slicefruits2)
+
+
+// some เป็นฟังก์ชันใน JavaScript ที่ใช้สำหรับการตรวจสอบว่าอย่างน้อยหนึ่งสมาชิกในอาร์เรย์ (array) ตรงตามเงื่อนไขที่กำหนดหรือไม่
+// ถ้ามีอย่างน้อย1สมาชิกเป็นจริงจะได้ค่าเป็น true
+let yourages = [30, 20, 10];
+
+function checkAdult(yourage){
+    return yourage >= 18;
+}
+
+let result = yourages.some(checkAdult);
+
+console.log(result); // แสดงผล true
+
+// sort จัดเรียง
+let mynameis = ['woramet', 'tompudsa', 'game'];
+let mynameis2 = mynameis.sort();
+console.log(mynameis2);
+
+// toString เปลี่ยนเป็น string
+let mycountry = ['thai', 'eng', 'japan'];
+let mycountry2 = mycountry.toString();
+console.log(mycountry2)
+
+// valueof เป็นเมธอด (method) ใน JavaScript ที่ใช้สำหรับการส่งค่าแทนตัวอ็อบเจ็กต์ (object) ในรูปแบบของค่าพื้นฐาน (primitive value) ของอ็อบเจ็กต์นั้น ๆ โดยทั่วไปแล้ว JavaScript จะเรียกใช้เมธอด valueOf() โดยอัตโนมัติเมื่อต้องการแปลงอ็อบเจ็กต์เป็นค่าพื้นฐาน 
+let mecountry = ['thai', 'eng', 'japan'];
+let mecountry2 = mecountry.valueOf();
+console.log(mecountry2)
