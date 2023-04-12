@@ -796,9 +796,35 @@ document.addEventListener('DOMContentLoaded', function() {
 // Romove element DOM
 document.addEventListener('DOMContentLoaded', function() {
     const child = document.getElementById("removeelement");
-    child.parentNode.removeChild(child);
+    child.remove();
+});
+
+// Add class
+document.addEventListener('DOMContentLoaded', function() {
+    const e3 = document.querySelector('.addclass');
+    e3.classList.add("addclass2");// .addclass addclass2
 });
 
 // Repaze class
-const div = document.querySelector('.primary');
-div.classList.replace('primary', 'secondary');
+document.addEventListener('DOMContentLoaded', function() {
+    const e4 = document.querySelector('.primary1');
+    e4.classList.replace('primary1', 'secondary1');
+});
+
+// Contains class
+document.addEventListener('DOMContentLoaded', function() {
+    const e5 = document.querySelector('.secondary1');
+    const findclassprimary1 = e5.classList.contains("primary1");
+    const findclasssecondary1 = e5.classList.contains("secondary1");
+    console.log(findclassprimary1);
+    console.log(findclasssecondary1);
+});
+
+// toggle class
+document.addEventListener('DOMContentLoaded', function() {
+    const e6 = document.querySelector('.t1');
+    e6.classList.toggle("toggle"); // .t1 toggle
+    e6.classList.toggle("toggle"); // .t1
+    e6.classList.toggle("toggle"); // .t1 toggle
+});
+
