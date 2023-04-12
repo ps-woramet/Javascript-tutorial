@@ -828,3 +828,60 @@ document.addEventListener('DOMContentLoaded', function() {
     e6.classList.toggle("toggle"); // .t1 toggle
 });
 
+// การเรียกใช้ API
+// วิธี 1
+let request = new XMLHttpRequest();
+request.open('GET', 'https://jsonplaceholder.typicode.com/users');
+request.send();
+request.onload = () =>{
+    console.log(request);
+    if (request.status === 200){
+        console.log('call api')
+        console.log(JSON.parse(request.response))
+    }else {
+        console.log(`error ${request.status} ${request.statusText}`);
+    };
+};
+
+// การเรียกใช้ API
+// วิธี 2 jquery
+$(document).ready(function(){
+    $.ajax({
+        url: 'https://jsonplaceholder.typicode.com/users',
+        type : 'GET',
+        success: function(result){
+            console.log('jquery');
+            console.log(result);
+        },
+        error: function(error){
+            console.log(error);
+        }
+        
+    })
+})
+
+// การเรียกใช้ API
+// วิธี 3
+async function getUser(){
+    let response3 = await fetch('https://jsonplaceholder.typicode.com/users');
+    console.log('fetch');
+    console.log(response3);
+    let data = await response3.json();
+    return data
+};
+
+getUser();
+
+
+// การเรียกใช้ Axios
+// วิธี 4
+const url = 'https://jsonplaceholder.typicode.com/users';
+
+axios.get(url).then((response) => {
+  // handle success
+  console.log('axios');
+  console.log(response);
+})
+.catch((error) => {
+  // handle errors
+});
