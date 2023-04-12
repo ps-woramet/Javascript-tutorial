@@ -755,3 +755,50 @@ async function fetchUsers(endpoint){
 fetchUsers('https://jsonplaceholder.typicode.com/users')
     .then(data => console.log(data.map(user => user.username)))
     .catch(err => console.log('Oops, error', err.message));
+
+
+// DOM
+document.getElementById("id02").innerHTML = document.getElementById("id01").childNodes[0].nodeValue;
+
+const x_p = document.querySelectorAll("p");
+const x_p1 = document.querySelector("p");
+const x_id06 = document.querySelector("#id06");
+const x_c03 = document.getElementsByClassName("class03");
+x_c03.innerHTML = "getclass03";
+const x_id05 = document.getElementById("id05");
+x_id05.innerHTML = "getid05";
+document.getElementById("id04").innerHTML = "New text!";
+
+// DOM CSS
+document.getElementById("id06").style.color = "blue";
+
+// Create element DOM
+const e = document.createElement("p");
+e.className += " otherclass";
+e.classList.add("newclass");
+e.classList.toggle("toggle");
+e.setAttribute("id", "new id" + 1);
+e.innerHTML = "create new tag1";
+
+// AppendChild element DOM
+// Domcontentloaded เมื่อ dom โหลดเสร็จ
+document.addEventListener('DOMContentLoaded', function() {
+    const e1 = document.createElement("p");
+    e1.className += " otherclass";
+    e1.classList.add("newclass");
+    e1.classList.toggle("toggle");
+    e1.setAttribute("id", "new id" + 1);
+    e1.innerHTML = "create new tag2";
+    const sce = document.querySelector('.show_create_element');
+    sce.appendChild(e1);
+});
+
+// Romove element DOM
+document.addEventListener('DOMContentLoaded', function() {
+    const child = document.getElementById("removeelement");
+    child.parentNode.removeChild(child);
+});
+
+// Repaze class
+const div = document.querySelector('.primary');
+div.classList.replace('primary', 'secondary');
